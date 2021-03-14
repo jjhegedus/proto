@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix github.com/jjhegedus/proto/subpkg
+gazelle(name = "gazelle")
+
+go_library(
+    name = "subpkg",
+    srcs = ["subpkg.go"],
+    importpath = "github.com/jjhegedus/proto/subpkg",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "subpkg_test",
+    srcs = ["subpkg_test.go"],
+    deps = [":subpkg"],
+)
