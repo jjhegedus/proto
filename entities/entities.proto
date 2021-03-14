@@ -1,0 +1,28 @@
+syntax="proto3";
+
+package entities;
+option go_package = "github.com/jjhegedus/proto/entities";
+
+message EntityData{
+  string version = 1;
+  string domain = 2;
+  string singular = 3;
+  string plural = 4;
+  string baseEntity = 5;
+  string schema = 6;
+  bool deleted = 7;
+}
+
+message EntityId{
+  int64 id = 1;
+}
+
+message Entity{
+  int64 id = 1;
+  EntityData entityData = 2;
+}
+
+service Entities {
+  rpc CreateEntity(EntityData) returns (Entity){};
+  rpc GetEntity(EntityId) returns (Entity);
+}
