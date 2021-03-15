@@ -42,3 +42,7 @@ protobuf_deps()
 load("@io_bazel_rules_go//tests:grpc_repos.bzl", "grpc_dependencies")
 
 grpc_dependencies()
+
+load("@io_bazel_rules_go//extras:embed_data_deps.bzl", "go_embed_data_dependencies")
+
+go_embed_data_dependencies()
